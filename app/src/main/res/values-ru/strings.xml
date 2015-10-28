@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="credit">Расходы</string>
+    <string name="calculating">Подсчет</string>
+    <string name="deleted">Удалено</string>
+    <string name="name">Что</string>
+    <string name="shop">Где</string>
+    <string name="price">Цена</string>
+    <string name="amount">К-во</string>
+    <string name="result">Общая</string>
+    <string name="daily_credit">В день</string>
+    <string name="date">День покупки</string>
+    <string name="product_name">Что куплено</string>
+    <string name="shop_name">Где куплено</string>
+    <string name="predict_credit">Прогноз</string>
+    <string name="saved">Сохранено</string>
+    <string name="export_string">Экспорт</string>
+    <string name="import_string">Импорт</string>
+    <string name="import_export_question">Импортировать или Экспортировать данные?</string>
+    <string name="loaded">Загружено</string>
+    <string name="error">Ошибка</string>
+    <string name="app_name" translatable="false">Домашний эконом</string>
+    <string name="choose_dir">Выберите папку</string>
+    <string name="choose_file">Выберите файл</string>
+    <string name="set_filename">Имя файла</string>
+    <string name="add">Принять</string>
+    <string name="saturday">Сб</string>
+    <string name="sunday">Вс</string>
+    <string name="thursday">Чт</string>
+    <string name="tuesday">Вт</string>
+    <string name="group_prompt">Группы</string>
+    <string name="edit_product">Редактировать...</string>
+    <string name="no_group">Нет группы...</string>
+    <string name="wednesday">Ср</string>
+    <string name="monday">Пн</string>
+    <string name="friday">Пт</string>
+    <string name="group">Группа</string>
+    <string name="rename_group">Изменить/Добавить:</string>
+    <string name="cancel">Отмена</string>
+    <string name="label.jan">Ян</string>
+    <string name="label.feb">Фе</string>
+    <string name="label.mar">Мр</string>
+    <string name="label.apr">Ап</string>
+    <string name="label.may">Мй</string>
+    <string name="label.jun">Ин</string>
+    <string name="label.jul">Ил</string>
+    <string name="label.aug">Ав</string>
+    <string name="label.sep">Се</string>
+    <string name="label.oct">Ок</string>
+    <string name="label.nov">Но</string>
+    <string name="label.dec">Де</string>
+</resources>

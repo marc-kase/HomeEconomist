@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="kz.gereski.m.homebank.ChartYearPageActivity"
+    android:gravity="center_horizontal"
+    android:foregroundGravity="center_horizontal|fill">
+
+    <Space
+        android:layout_width="@dimen/margin20sp"
+        android:layout_height="@dimen/margin20sp" />
+
+    <RelativeLayout
+        android:id="@+id/linkToGropsChartYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#58100b">
+
+        <TextView
+            android:id="@+id/txtChartExpLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:gravity="left"
+            android:paddingRight="8dp"
+            android:text="@string/credit"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textCreditChartYearVal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_column="1"
+            android:layout_gravity="right"
+            android:layout_row="0"
+            android:gravity="left"
+            android:text="0.00"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="@dimen/margin20sp"
+        android:layout_height="@dimen/margin20sp" />
+
+    <lecho.lib.hellocharts.view.ColumnChartView
+        android:id="@+id/columnchart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#00020202"
+        android:layout_gravity="bottom"
+        android:layout_weight="1" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/label.jan"
+                android:id="@+id/tvM1"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:gravity="center_horizontal" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/label.feb"
+                android:id="@+id/tvM2"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/label.mar"
+                android:id="@+id/tvM3"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/label.apr"
+                android:id="@+id/tvM4"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/label.may"
+                android:id="@+id/tvM5"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/label.jun"
+                android:id="@+id/tvM6"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/label.jul"
+                android:id="@+id/tvM7"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/label.aug"
+                android:id="@+id/tvM8"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/label.sep"
+                android:id="@+id/tvM9"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/label.oct"
+                android:id="@+id/tvM10"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/label.nov"
+                android:id="@+id/tvM11"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/label.dec"
+                android:id="@+id/tvM12"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textStyle="bold" />
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>

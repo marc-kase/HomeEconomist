@@ -1,0 +1,34 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+        }
+    }
+    compileSdkVersion 23
+    buildToolsVersion '22.0.1'
+    defaultConfig {
+        applicationId "kz.gereski.m.homebank"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 20
+        versionName '0.2'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+    dexOptions {
+        incremental false
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:23.0.1'
+    compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
+    compile 'com.github.yukuku:ambilwarna:2.0.1'
+}

@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">HomeEconomist</string>
+
+    <string name="hello_world" translatable="false">Hello world!</string>
+    <string name="action_settings" translatable="false">Settings</string>
+
+    <string name="title_activity_day_list_page" translatable="false">DayListPageActivity</string>
+    <string name="dummy_button" translatable="false">Dummy Button</string>
+    <string name="dummy_content" translatable="false">DUMMY\nCONTENT</string>
+    <string name="title_activity_product" translatable="false">ProductActivity</string>
+
+    <string name="credit">Expenses</string>
+    <string name="daily_credit">Daily</string>
+    <string name="predict_credit">Prognosis</string>
+    <string name="calculating">Calculating</string>
+    <string name="deleted">Deleted</string>
+    <string name="loaded">Loaded</string>
+    <string name="error">Error</string>
+    <string name="name">What</string>
+    <string name="price">Price</string>
+    <string name="result">Result</string>
+    <string name="shop">Where</string>
+    <string name="amount">Amount</string>
+    <string name="date">When you bought</string>
+    <string name="shop_name">Where you bought</string>
+    <string name="product_name">What you bought</string>
+    <string name="title_activity_save_file" translatable="false">SaveFileActivity</string>
+    <string name="title_activity_open_file" translatable="false">OpenFileActivity</string>
+    <string name="export_string">Export</string>
+    <string name="import_string">Import</string>
+    <string name="import_export_question">Import or Export Data?</string>
+    <string name="choose_file">Choose file</string>
+    <string name="choose_dir">Choose directory</string>
+    <string name="set_filename">Set filename</string>
+    <string name="saved">Saved</string>
+    <string name="add">Commit</string>
+    <string name="title_activity_new_calendar_page" translatable="false">NewCalendarPageActivity</string>
+    <string name="monday">Mo</string>
+    <string name="wednesday">We</string>
+    <string name="friday">Fr</string>
+    <string name="tuesday">Tu</string>
+
+    <string name="group_prompt">Groups</string>
+    <string name="edit_product">Edit...</string>
+    <string name="no_group">No Group</string>
+    <string-array name="types_array">
+        <item>Choose type</item>
+    </string-array>
+    <string name="thursday">Th</string>
+    <string name="sunday">Su</string>
+    <string name="saturday">Sa</string>
+    <string name="title_activity_chart_calendar_page" translatable="false">ChartCalendarPageActivity</string>
+    <string name="group">Group</string>
+
+    <string name="title_activity_product_types" translatable="false">ProductTypesActivity</string>
+    <string name="rename_group">Edit/Add:</string>
+    <string name="cancel">Cancel</string>
+    <string name="label.jan">Ja</string>
+    <string name="label.feb">Fe</string>
+    <string name="label.mar">Mr</string>
+    <string name="label.apr">Ap</string>
+    <string name="label.may">My</string>
+    <string name="label.jun">Jn</string>
+    <string name="label.jul">Ju</string>
+    <string name="label.aug">Au</string>
+    <string name="label.sep">Se</string>
+    <string name="label.oct">Oc</string>
+    <string name="label.nov">No</string>
+    <string name="label.dec">De</string>
+
+</resources>
