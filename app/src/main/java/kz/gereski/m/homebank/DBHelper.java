@@ -37,7 +37,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String SHOPPING_TAB = "shopping";
     public static final String GROUPS_TAB = "groups";
     private final String LOG_TAG = "myHomeBank";
-    int newVersion = 1;
+    int newVersion = 2;
 
     public DBHelper(Context context) {
         super(context, "myBankDB", null, 1);
