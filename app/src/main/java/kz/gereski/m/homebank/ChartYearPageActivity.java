@@ -48,18 +48,21 @@ public class ChartYearPageActivity extends Activity {
         Double total = 0.0;
         Map<Long, Double> perGroup;
 
+        Map<Long, String> groups = dbHelper.getGroups(dbHelper.getReadableDatabase());
+        String label;
+
         List<Column> cols = new ArrayList<>();
         for (int i = 1; i < 13; i++) {
-
             total += dbHelper.getTotalExpense(i, year);
             List values = new ArrayList();
-//            Map<Long, String> groups = dbHelper.getGroups(dbHelper.getReadableDatabase());
-//            groups.size();
 
-            perGroup = dbHelper.getExpensesByGroup(calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.YEAR));
+            perGroup = dbHelper.getExpensesByGroup(calendar.get(Calendar.MONTH) + 1,
+                    calendar.get(Calendar.YEAR));
             for (Map.Entry<Long, Double> g : perGroup.entrySet()) {
                 int color = dbHelper.getGroupColorByKey(g.getKey(), dbHelper.getReadableDatabase());
                 SubcolumnValue cval = new SubcolumnValue(g.getValue().floatValue(), color);
+                label = groups.get(g.getKey()) != null ? groups.get(g.getKey()) : getString(R.string.nogroup);
+                cval.setLabel(label + ": " + Formatter.formatMoney(g.getValue()));
                 values.add(cval);
             }
 

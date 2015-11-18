@@ -31,6 +31,7 @@
     <string name="group_prompt">Группы</string>
     <string name="edit_product">Редактировать...</string>
     <string name="no_group">Нет группы...</string>
+    <string name="nogroup">Нет группы</string>
     <string name="wednesday">Ср</string>
     <string name="monday">Пн</string>
     <string name="friday">Пт</string>
