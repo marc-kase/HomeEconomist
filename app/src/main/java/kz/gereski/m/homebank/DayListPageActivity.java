@@ -120,6 +120,7 @@ public class DayListPageActivity extends Activity {
             tvProdPrice.setPadding(8, 3, 8, 3);
 
             ivDel.setBaselineAlignBottom(true);
+            ivDel.setScaleType(ImageView.ScaleType.FIT_XY);
 
             final long id = product.id;
             tvId.setVisibility(View.GONE);

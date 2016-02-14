@@ -11,7 +11,7 @@ android {
         applicationId "kz.gereski.m.homebank"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 21
+        versionCode 22
         versionName '0.2'
     }
     buildTypes {

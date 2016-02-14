@@ -26,7 +26,8 @@
         <activity
             android:name=".ProductActivity"
             android:label="@string/title_activity_product"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name=".SaveFileActivity"
             android:label="@string/title_activity_save_file"
