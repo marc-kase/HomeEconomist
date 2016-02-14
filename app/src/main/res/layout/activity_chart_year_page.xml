@@ -63,12 +63,18 @@
         android:layout_gravity="bottom"
         android:layout_weight="1" />
 
-    <TableLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/layMonths"></LinearLayout>
+
+<!--    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TableRow>
-            <TextView
+        <TableRow android:id="@+id/trMonths">
+&lt;!&ndash;            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
@@ -175,9 +181,9 @@
                 android:id="@+id/tvM12"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:textStyle="bold" />
+                android:textStyle="bold" />&ndash;&gt;
         </TableRow>
 
-    </TableLayout>
+    </TableLayout>-->
 
 </LinearLayout>

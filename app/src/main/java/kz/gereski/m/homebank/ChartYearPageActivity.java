@@ -2,13 +2,17 @@ package kz.gereski.m.homebank;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +26,10 @@ import lecho.lib.hellocharts.view.ColumnChartView;
 import static kz.gereski.m.homebank.util.Formatter.formatMoney;
 
 public class ChartYearPageActivity extends Activity {
-    private DBHelper dbHelper;
+    private int[] mths = {
+            R.string.label_jan, R.string.label_feb, R.string.label_mar, R.string.label_apr,
+            R.string.label_may, R.string.label_jun, R.string.label_jul, R.string.label_aug,
+            R.string.label_sep, R.string.label_oct, R.string.label_nov, R.string.label_dec,};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,21 +45,36 @@ public class ChartYearPageActivity extends Activity {
             }
         });
 
-        dbHelper = new DBHelper(this);
+        LinearLayout row = (LinearLayout)findViewById(R.id.layMonths);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
+
+        DBHelper dbHelper = new DBHelper(this);
+
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(Formatter.parseDate("2015-12-01", Formatter.YYYYMMDDdashed));
-//        calendar.setTime(new Date());todo temporary unavailable
+        Long d = getIntent().getExtras().getLong("Date");
+        calendar.setTime(new Date(d));
+
         calendar.add(Calendar.MONTH, -11);
         calendar.set(Calendar.DAY_OF_MONTH, 1);
         int year = calendar.get(Calendar.YEAR);
         Double total = 0.0;
         Map<Long, Double> perGroup;
+        int currMonth = calendar.get(Calendar.MONTH);
 
         Map<Long, String> groups = dbHelper.getGroups(dbHelper.getReadableDatabase());
         String label;
 
         List<Column> cols = new ArrayList<>();
         for (int i = 1; i < 13; i++) {
+            TextView tv = new TextView(this);
+            tv.setText(mths[currMonth]);
+            tv.setTypeface(null, Typeface.BOLD);
+            tv.setGravity(Gravity.CENTER_HORIZONTAL);
+            tv.setLayoutParams(params);
+            row.addView(tv);
+
             total += dbHelper.getTotalExpense(i, year);
             List values = new ArrayList();
 
@@ -85,6 +107,8 @@ public class ChartYearPageActivity extends Activity {
 
             ColumnChartView chartView = (ColumnChartView) findViewById(R.id.columnchart);
             chartView.setColumnChartData(data);
+
+            if (++currMonth > 11) currMonth=0;
         }
 
         tvExpenses.setText(formatMoney(total));

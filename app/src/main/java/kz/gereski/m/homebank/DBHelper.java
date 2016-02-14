@@ -12,9 +12,7 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import java.text.Normalizer;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -24,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import kz.gereski.m.homebank.util.CalendarHelper;
 import kz.gereski.m.homebank.util.Formatter;
 
 import static kz.gereski.m.homebank.DBHelper.ACTION.DELETE;

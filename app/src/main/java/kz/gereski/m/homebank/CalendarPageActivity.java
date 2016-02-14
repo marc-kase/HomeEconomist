@@ -18,8 +18,6 @@ import android.widget.Toast;
 import java.util.Arrays;
 import java.util.Calendar;
 
-import kz.gereski.m.homebank.util.CalendarHelper;
-
 import static kz.gereski.m.homebank.util.Formatter.YYYYMMDDdashed;
 import static kz.gereski.m.homebank.util.Formatter.formatMoney;
 import static kz.gereski.m.homebank.util.Formatter.gap;
@@ -29,16 +27,14 @@ import static kz.gereski.m.homebank.util.Formatter.rusMonths1;
 
 public class CalendarPageActivity extends Activity {
     private long calendarDate;
-    private String currentMonth = "";
     private TextView monthName = null;
-    private CalendarView cv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_page);
 
-        cv = (CalendarView) findViewById(R.id.calendar);
+        CalendarView cv = (CalendarView) findViewById(R.id.calendar);
 
         ViewGroup vg = (ViewGroup) cv.getChildAt(0);
         View child = vg.getChildAt(0);
@@ -106,7 +102,7 @@ public class CalendarPageActivity extends Activity {
         TextView tPredictCredit = (TextView) findViewById(R.id.textPredictCredit);
 
         String m = monthName.getText().toString();
-        currentMonth = m;
+        String currentMonth = m;
 
         int month = Arrays.asList(rusMonths1).indexOf((currentMonth.split("\\s")[0])) + 1;
         int year = Integer.parseInt(currentMonth.split("\\s")[1]);

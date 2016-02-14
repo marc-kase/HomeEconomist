@@ -34,7 +34,7 @@ public class DaysCalendarPageActivity extends Activity implements CalendarTableL
     private static Calendar today = Calendar.getInstance();
     private static SimpleDateFormat df;
     private View prevView = null;
-    public static enum RequestCode {ProductActivity, ChartCalPage, DayListPage}
+    public enum RequestCode {ProductActivity, ChartCalPage, DayListPage}
 
 
     @Override
@@ -163,6 +163,7 @@ public class DaysCalendarPageActivity extends Activity implements CalendarTableL
 
     private void showChartYearPage(Calendar cal) {
         Intent intent = new Intent(this, ChartYearPageActivity.class);
+        intent.putExtra("Date", cal.getTime().getTime());
         startActivity(intent);
     }
 

@@ -24,7 +24,6 @@ import kz.gereski.m.homebank.util.Formatter;
 
 public class ProductActivity extends Activity {
     private DBHelper dbHelper;
-    private Product product;
     private Spinner spnGroup = null;
     private Map<Long, String> groups;
     private String selectedGroup = "";
@@ -156,7 +155,7 @@ public class ProductActivity extends Activity {
         int idx = sp.getSelectedItemPosition();
         Map.Entry<Long, String> t = (Map.Entry) (groups.entrySet().toArray()[idx]);
 
-        product = new Product();
+        Product product = new Product();
         product.id = id;
         product.date = date;
         product.name = name.getText().toString();

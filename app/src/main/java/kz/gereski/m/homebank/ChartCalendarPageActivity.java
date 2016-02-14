@@ -28,8 +28,6 @@ import java.util.TreeMap;
 import kz.gereski.m.homebank.util.Formatter;
 
 public class ChartCalendarPageActivity extends Activity {
-    private LinearLayout lay;
-    private DBHelper dbHelper;
     private Calendar calendar;
 
     @Override
@@ -43,7 +41,7 @@ public class ChartCalendarPageActivity extends Activity {
             df = Formatter.getRusDateFormatter1();
         } else df = new SimpleDateFormat("MMMM yyyy", locale);
 
-        dbHelper = new DBHelper(this);
+        DBHelper dbHelper = new DBHelper(this);
         calendar = Calendar.getInstance(new Locale("ru"));
         Long d = getIntent().getExtras().getLong("Date");
         calendar.setTime(new Date(d));
@@ -71,7 +69,7 @@ public class ChartCalendarPageActivity extends Activity {
             }
         });
 
-        lay = (LinearLayout) findViewById(R.id.layProgressGroup);
+        LinearLayout lay = (LinearLayout) findViewById(R.id.layProgressGroup);
         for (Map.Entry<Long, String> g : groups.entrySet()) {
 
             final TextView group = new TextView(this);

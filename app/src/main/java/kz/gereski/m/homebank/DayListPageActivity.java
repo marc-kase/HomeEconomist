@@ -32,7 +32,6 @@ import static kz.gereski.m.homebank.DBHelper.ACTION;
 public class DayListPageActivity extends Activity {
     private DBHelper dbHelper;
     private EditText et;
-    private double total = 0;
     private long groupId = -1;
 
     @Override
@@ -66,7 +65,7 @@ public class DayListPageActivity extends Activity {
     }
 
     private void fillTable(Date date, final long groupId) {
-        total = 0;
+        double total = 0;
 
         TableLayout table = (TableLayout) findViewById(R.id.tbDayList);
         table.removeAllViews();
