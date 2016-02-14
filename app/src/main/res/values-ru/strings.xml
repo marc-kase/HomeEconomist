@@ -21,6 +21,7 @@
     <string name="error">Ошибка</string>
     <string name="app_name" translatable="false">Домашний эконом</string>
     <string name="choose_dir">Выберите папку</string>
+    <string name="save_as">Сохранить как...</string>
     <string name="choose_file">Выберите файл</string>
     <string name="set_filename">Имя файла</string>
     <string name="add">Принять</string>
@@ -50,4 +51,12 @@
     <string name="label.oct">Ок</string>
     <string name="label.nov">Но</string>
     <string name="label.dec">Де</string>
+    <string name="file.cancel">Отмена</string>
+    <string name="file.new.folder">Создать папку</string>
+    <string name="file.new.folder.name">Новая папка</string>
+    <string name="file.failed.to.create">Не могу создать</string>
+    <string name="file.folder.select">Выбор папкиt:</string>
+    <string name="file.file.save.as">Сохранить как:</string>
+    <string name="file.file.open">Открыть:</string>
+
 </resources>

@@ -102,10 +102,9 @@ public class CalendarPageActivity extends Activity {
         TextView tPredictCredit = (TextView) findViewById(R.id.textPredictCredit);
 
         String m = monthName.getText().toString();
-        String currentMonth = m;
 
-        int month = Arrays.asList(rusMonths1).indexOf((currentMonth.split("\\s")[0])) + 1;
-        int year = Integer.parseInt(currentMonth.split("\\s")[1]);
+        int month = Arrays.asList(rusMonths1).indexOf((m.split("\\s")[0])) + 1;
+        int year = Integer.parseInt(m.split("\\s")[1]);
 
         int numDays = 1;
         Calendar c = Calendar.getInstance();

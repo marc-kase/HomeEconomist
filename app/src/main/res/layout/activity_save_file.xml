@@ -14,7 +14,7 @@
         android:id="@+id/txtFolder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/choose_dir"
+        android:text="@string/choose_file"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -24,25 +24,26 @@
         android:clickable="true"
         android:editable="false"
         android:focusable="false"
-        android:text="/storage/emulated/0/" />
+        android:text="/storage/emulated/0/myhomeeconom.mhe" />
 
-    <TextView
+<!--    <TextView
         android:id="@+id/txtFilename"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/set_filename"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />-->
 
-    <EditText
+<!--    <EditText
         android:id="@+id/etFilename"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="myhomeconom.mhe" />
+        android:text="myhomeconom.mhe" />-->
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="40px" />
 
+        <!--android:text="@string/export_string" -->
     <Button
         android:id="@+id/btSave"
         android:layout_width="wrap_content"
@@ -53,6 +54,7 @@
         android:textColor="#ffffff"
         android:background="#12344a"
         android:padding="20sp"
-        android:text="@string/export_string" />
+        android:text="@string/export_string"
+        />
 
 </LinearLayout>

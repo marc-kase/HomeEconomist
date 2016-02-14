@@ -35,6 +35,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,6 +50,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import kz.gereski.m.homebank.R;
+
 //import android.content.DialogInterface.OnKeyListener;
 //import android.view.KeyEvent;
 
@@ -56,13 +59,13 @@ public class SimpleFileDialog {
     private static final int FileOpen = 0;
     private static final int FileSave = 1;
     private static final int FolderChoose = 2;
-    public String default_file_name = "default.txt";
+    public String default_file_name;
     private int Select_type = FileSave;
     private String m_sdcardDirectory = "";
     private Context m_context;
     private TextView m_titleView1;
     private TextView m_titleView;
-    private String selected_file_name = default_file_name;
+    private String selected_file_name;
     private EditText input_text;
 
     private String m_dir = "";
@@ -71,7 +74,10 @@ public class SimpleFileDialog {
     private ArrayAdapter<String> m_listAdapter = null;
     private boolean m_goToUpper = false;
 
-    public SimpleFileDialog(Context context, String file_select_type, SimpleFileDialogListener SimpleFileDialogListener) {
+    private String txtCancel, txtNewFolder, txtNotCreated, txtSelectFolder, txtOpen, txtSave;
+
+    public SimpleFileDialog(Context context, String file_select_type, String defaultFilename,
+                            SimpleFileDialogListener SimpleFileDialogListener) {
         if (file_select_type.equals("FileOpen")) {
             Select_type = FileOpen;
         } else if (file_select_type.equals("FileSave")) {
@@ -88,6 +94,9 @@ public class SimpleFileDialog {
             Select_type = FolderChoose;
             m_goToUpper = true;
         } else Select_type = FileOpen;
+
+        default_file_name = defaultFilename;
+        selected_file_name = defaultFilename;
 
         m_context = context;
         m_sdcardDirectory = Environment.getExternalStorageDirectory().getAbsolutePath();
@@ -146,7 +155,7 @@ public class SimpleFileDialog {
                 } else {
                     m_dir += "/" + sel;
                 }
-                selected_file_name = default_file_name;
+//                selected_file_name = default_file_name;
 
                 if ((new File(m_dir).isFile())) // If the selection is a regular file
                 {
@@ -158,7 +167,7 @@ public class SimpleFileDialog {
             }
         }
 
-        AlertDialog.Builder dialogBuilder = createDirectoryChooserDialog(dir, m_subdirs,
+        AlertDialog.Builder dialogBuilder = createDirectoryChooserDialog(default_file_name, m_subdirs,
                 new SimpleFileDialogOnClickListener());
 
         dialogBuilder.setPositiveButton("OK", new OnClickListener() {
@@ -177,12 +186,17 @@ public class SimpleFileDialog {
                     }
                 }
             }
-        }).setNegativeButton("Cancel", null);
+        }).setNegativeButton(txtCancel, null);
 
         final AlertDialog dirsDialog = dialogBuilder.create();
 
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dirsDialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.MATCH_PARENT;
         // Show directory chooser dialog
         dirsDialog.show();
+        dirsDialog.getWindow().setAttributes(lp);
     }
 
     private boolean createSubDir(String newDir) {
@@ -233,6 +247,13 @@ public class SimpleFileDialog {
     private AlertDialog.Builder createDirectoryChooserDialog(String title, List<String> listItems,
                                                              DialogInterface.OnClickListener onClickListener) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(m_context);
+
+        txtCancel = dialogBuilder.getContext().getResources().getString(R.string.file_cancel);
+        txtNewFolder = dialogBuilder.getContext().getResources().getString(R.string.file_new_folder);
+        txtNotCreated = dialogBuilder.getContext().getResources().getString(R.string.file_failed_to_create);
+        txtOpen = dialogBuilder.getContext().getResources().getString(R.string.file_file_open);
+        txtSave = dialogBuilder.getContext().getResources().getString(R.string.file_file_save_as);
+        txtSelectFolder = dialogBuilder.getContext().getResources().getString(R.string.file_folder_select);
         ////////////////////////////////////////////////
         // Create title text showing file select group //
         ////////////////////////////////////////////////
@@ -241,14 +262,14 @@ public class SimpleFileDialog {
         //m_titleView1.setTextAppearance(m_context, android.R.style.TextAppearance_Large);
         //m_titleView1.setTextColor( m_context.getResources().getColor(android.R.color.black) );
 
-        if (Select_type == FileOpen) m_titleView1.setText("Open:");
-        if (Select_type == FileSave) m_titleView1.setText("Save As:");
-        if (Select_type == FolderChoose) m_titleView1.setText("Folder Select:");
+        if (Select_type == FileOpen) m_titleView1.setText(txtOpen);
+        if (Select_type == FileSave) m_titleView1.setText(txtSave);
+        if (Select_type == FolderChoose) m_titleView1.setText(txtSelectFolder);
 
         //need to make this a variable Save as, Open, Select Directory
         m_titleView1.setGravity(Gravity.CENTER_VERTICAL);
-        m_titleView1.setBackgroundColor(Color.DKGRAY); // dark gray 	-12303292
-        m_titleView1.setTextColor(m_context.getResources().getColor(android.R.color.white));
+        m_titleView1.setBackgroundColor(Color.parseColor("#58100b"));
+        m_titleView1.setTextColor(Color.WHITE);
 
         // Create custom view for AlertDialog title
         LinearLayout titleLayout1 = new LinearLayout(m_context);
@@ -262,7 +283,7 @@ public class SimpleFileDialog {
             ///////////////////////////////
             Button newDirButton = new Button(m_context);
             newDirButton.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-            newDirButton.setText("New Folder");
+            newDirButton.setText(txtNewFolder);
             newDirButton.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
@@ -281,11 +302,11 @@ public class SimpleFileDialog {
                                                                 m_dir += "/" + newDirName;
                                                                 updateDirectory();
                                                             } else {
-                                                                Toast.makeText(m_context, "Failed to create '"
-                                                                        + newDirName + "' folder", Toast.LENGTH_SHORT).show();
+                                                                Toast.makeText(m_context, txtNotCreated + " '"
+                                                                        + newDirName + "'", Toast.LENGTH_SHORT).show();
                                                             }
                                                         }
-                                                    }).setNegativeButton("Cancel", null).show();
+                                                    }).setNegativeButton(txtCancel, null).show();
                                                 }
                                             }
             );
@@ -300,7 +321,7 @@ public class SimpleFileDialog {
 
         m_titleView = new TextView(m_context);
         m_titleView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-        m_titleView.setBackgroundColor(Color.DKGRAY); // dark gray -12303292
+        m_titleView.setBackgroundColor(Color.parseColor("#12344a"));
         m_titleView.setTextColor(m_context.getResources().getColor(android.R.color.white));
         m_titleView.setGravity(Gravity.CENTER_VERTICAL);
         m_titleView.setText(title);
@@ -309,9 +330,12 @@ public class SimpleFileDialog {
 
         if (Select_type == FileOpen || Select_type == FileSave) {
             input_text = new EditText(m_context);
-            input_text.setText(default_file_name);
+            input_text.setText(selected_file_name);
+            input_text.setBackgroundColor(Color.parseColor("#061018"));
+            input_text.setTextColor(m_context.getResources().getColor(android.R.color.white));
             titleLayout.addView(input_text);
         }
+
         //////////////////////////////////////////
         // Set Views and Finish Dialog builder  //
         //////////////////////////////////////////

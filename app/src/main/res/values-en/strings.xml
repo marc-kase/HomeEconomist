@@ -44,10 +44,19 @@
     <string name="credit">Expenses</string>
     <string name="choose_file">Choose file</string>
     <string name="choose_dir">Choose directory</string>
+    <string name="save_as">Save as..</string>
     <string name="calculating">Calculating</string>
     <string name="app_name" translatable="false">HomeEconomist</string>
     <string name="amount">Amount</string>
     <string name="add">Commit</string>
     <string name="tuesday">Tu</string>
     <string name="wednesday">We</string>
+    <string name="file.cancel">Cancel</string>
+    <string name="file.new.folder">New folder</string>
+    <string name="file.new.folder.name">New Folder Name</string>
+    <string name="file.failed.to.create">Failed to create</string>
+    <string name="file.folder.select">Folder Select:</string>
+    <string name="file.file.save.as">Save As:</string>
+    <string name="file.file.open">Open:</string>
+
 </resources>

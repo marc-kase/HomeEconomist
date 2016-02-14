@@ -20,13 +20,16 @@ import kz.gereski.m.homebank.util.SimpleFileDialog;
 
 public class SaveFileActivity extends Activity {
 
+    public final String defaultFile = "myhomeeconom.mhe";
+    public final String defaultDir = "/storage/emulated/0/";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_file);
 
         final EditText etFolder = (EditText) findViewById(R.id.etFolder);
-        final EditText etFilename = (EditText) findViewById(R.id.etFilename);
+//        final EditText etFilename = (EditText) findViewById(R.id.etFilename);
 
         etFolder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,15 +38,12 @@ public class SaveFileActivity extends Activity {
             }
         });
 
-//        etFolder.setText("/storage/extSdCard/MyHomeEcono");
-//        etFilename.setText(new Date().getTime() + ".txt");
-
         Button btSave = (Button) findViewById(R.id.btSave);
         btSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    saveFile(etFolder.getText().toString() + "/" + etFilename.getText().toString());
+                    saveFile(etFolder.getText().toString()/* + "/" + etFilename.getText().toString()*/);
                 } catch (IOException | ParseException e) {
                     e.printStackTrace();
                 }
@@ -93,7 +93,9 @@ public class SaveFileActivity extends Activity {
     private void chooseDir(final EditText etFolder) {
         SimpleFileDialog fileOpenDialog = new SimpleFileDialog(
                 SaveFileActivity.this,
-                "FolderChoose",
+//                "FolderChoose",
+                "FileSave",
+                defaultFile,
                 new SimpleFileDialog.SimpleFileDialogListener() {
                     @Override
                     public void onChosenDir(String chosenDir) {
@@ -101,7 +103,7 @@ public class SaveFileActivity extends Activity {
                     }
                 }
         );
-        fileOpenDialog.default_file_name = etFolder.getText().toString();
-        fileOpenDialog.chooseFile_or_Dir(fileOpenDialog.default_file_name);
+        fileOpenDialog.default_file_name = defaultDir;
+        fileOpenDialog.chooseFile_or_Dir(defaultDir);
     }
 }

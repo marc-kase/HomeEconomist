@@ -19,6 +19,8 @@ import kz.gereski.m.homebank.util.SimpleFileDialog;
 
 
 public class OpenFileActivity extends Activity {
+    public final String defaultFile = "myhomeeconom.mhe";
+    public final String defaultDir = "/storage/emulated/0/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +97,8 @@ public class OpenFileActivity extends Activity {
 
         SimpleFileDialog fileOpenDialog = new SimpleFileDialog(
                 OpenFileActivity.this,
-                "FileSave..",
+                "FileOpen",
+                defaultFile,
                 new SimpleFileDialog.SimpleFileDialogListener() {
                     @Override
                     public void onChosenDir(String chosenDir) {
@@ -104,7 +107,7 @@ public class OpenFileActivity extends Activity {
                     }
                 }
         );
-        fileOpenDialog.default_file_name = etFilename.getText().toString();
-        fileOpenDialog.chooseFile_or_Dir(fileOpenDialog.default_file_name);
+        fileOpenDialog.default_file_name = defaultDir;
+        fileOpenDialog.chooseFile_or_Dir(defaultDir);
     }
 }
