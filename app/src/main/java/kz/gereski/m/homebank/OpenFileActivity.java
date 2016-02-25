@@ -87,7 +87,7 @@ public class OpenFileActivity extends Activity {
         inStream.close();
 
         boolean res = dbHelper.setImportedData(fileContent.toString());
-        if (res == true)
+        if (res)
             Toast.makeText(this, getResources().getString(R.string.loaded), Toast.LENGTH_SHORT).show();
         else
             Toast.makeText(this, getResources().getString(R.string.error), Toast.LENGTH_SHORT).show();

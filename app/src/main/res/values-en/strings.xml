@@ -37,7 +37,7 @@
     <string name="friday">Fr</string>
     <string name="export_string">Export</string>
     <string name="error">Error</string>
-    <string name="edit_product">Edit...</string>
+    <string name="edit_product">Edit…</string>
     <string name="deleted">Deleted</string>
     <string name="date">When you bought</string>
     <string name="daily_credit">Daily</string>
@@ -46,7 +46,7 @@
     <string name="choose_dir">Choose directory</string>
     <string name="save_as">Save as..</string>
     <string name="calculating">Calculating</string>
-    <string name="app_name" translatable="false">HomeEconomist</string>
+    <string name="app_name">HomeEconomist</string>
     <string name="amount">Amount</string>
     <string name="add">Commit</string>
     <string name="tuesday">Tu</string>
