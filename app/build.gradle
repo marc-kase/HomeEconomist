@@ -32,4 +32,5 @@ dependencies {
     compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
     compile 'com.github.yukuku:ambilwarna:2.0.1'
     compile 'com.github.amlcurran.showcaseview:library:5.4.1'
+    //http://stackoverflow.com/questions/12013334/how-do-you-create-a-transparent-demo-screen-for-an-android-app
 }
