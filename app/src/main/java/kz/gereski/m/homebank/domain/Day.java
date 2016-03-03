@@ -1,4 +1,4 @@
-package kz.gereski.m.homebank.util;
+package kz.gereski.m.homebank.domain;
 
 
 import java.util.Calendar;

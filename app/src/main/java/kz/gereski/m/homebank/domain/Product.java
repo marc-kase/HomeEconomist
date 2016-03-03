@@ -1,4 +1,4 @@
-package kz.gereski.m.homebank;
+package kz.gereski.m.homebank.domain;
 
 
 import java.util.Date;

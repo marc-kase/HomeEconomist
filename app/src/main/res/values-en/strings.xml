@@ -58,5 +58,7 @@
     <string name="file.folder.select">Folder Select:</string>
     <string name="file.file.save.as">Save As:</string>
     <string name="file.file.open">Open:</string>
+    <string name="set.groups">Groups settings:</string>
+    <string name="group_settings">Groups settings:</string>
 
 </resources>

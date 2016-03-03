@@ -20,6 +20,7 @@ import java.util.Map;
 
 import kz.gereski.m.homebank.GroupButton.GroupNameProcessor;
 import kz.gereski.m.homebank.util.CalendarHelper;
+import kz.gereski.m.homebank.util.DBHelper;
 import kz.gereski.m.homebank.util.Screen;
 import yuku.ambilwarna.AmbilWarnaDialog;
 
@@ -216,7 +217,7 @@ abstract class GroupButton extends LinearLayout {
         addView(tv);
 
         if (id != ADD_GROUPNAME_KEY) {
-            ibDel.setImageResource(R.drawable.delete);
+            ibDel.setImageResource(R.drawable.ic_cancel);
             ibDel.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -226,6 +227,7 @@ abstract class GroupButton extends LinearLayout {
         } else {
             ibDel.setImageResource(R.drawable.add);
             tv.setBackgroundColor(Color.TRANSPARENT);
+            tv.setText(R.string.group_settings);
             ibDel.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {

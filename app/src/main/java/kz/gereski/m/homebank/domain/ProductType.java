@@ -1,9 +1,9 @@
-package kz.gereski.m.homebank;
+package kz.gereski.m.homebank.domain;
 
 
 public class ProductType {
-    long id = 0L;
-    String name = "";
+    public long id = 0L;
+    public String name = "";
 
     public ProductType() {}
 

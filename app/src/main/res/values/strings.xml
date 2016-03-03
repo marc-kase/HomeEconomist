@@ -76,4 +76,9 @@
     <string name="file.file.save.as">Save As:</string>
     <string name="file.file.open">Open:</string>
 
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="set.groups">Groups settings:</string>
+    <string name="group_settings">Groups settings:</string>
+
 </resources>

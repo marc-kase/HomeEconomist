@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -25,6 +26,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 
+import kz.gereski.m.homebank.util.DBHelper;
 import kz.gereski.m.homebank.util.Formatter;
 
 public class ChartByGroupsPageActivity extends Activity {
@@ -125,6 +127,8 @@ public class ChartByGroupsPageActivity extends Activity {
             lay.addView(group);
             lay.addView(flayout);
         }
+
+        addOptions();
     }
 
     private double getMaxExpenses(Map<Long, Double> expByGroup) {
@@ -150,7 +154,18 @@ public class ChartByGroupsPageActivity extends Activity {
         intent.putExtra("Date", calendar.getTime().getTime());
         intent.putExtra("GroupId", groupId);
         intent.putExtra("DateView", date);
+        intent.putExtra("Editable", false);
         startActivity(intent);
+    }
+
+    private void addOptions() {
+        ImageView opt = (ImageView) findViewById(R.id.btMenuList);
+        opt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showGroupPage();
+            }
+        });
     }
 
     @Override

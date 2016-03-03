@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import kz.gereski.m.homebank.util.DBHelper;
 import kz.gereski.m.homebank.util.Formatter;
 import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.Column;
@@ -112,10 +114,22 @@ public class ChartsInYearPageActivity extends Activity {
         }
 
         tvExpenses.setText(formatMoney(total));
+
+        addOptions();
     }
 
     private void showGroupPage() {
         Intent intent = new Intent(this, GroupsPageActivity.class);
         startActivity(intent);
+    }
+
+    private void addOptions() {
+        ImageView opt = (ImageView) findViewById(R.id.btMenuList);
+        opt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showGroupPage();
+            }
+        });
     }
 }

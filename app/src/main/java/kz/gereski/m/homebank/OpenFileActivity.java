@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 
+import kz.gereski.m.homebank.util.DBHelper;
 import kz.gereski.m.homebank.util.SimpleFileDialog;
 
 

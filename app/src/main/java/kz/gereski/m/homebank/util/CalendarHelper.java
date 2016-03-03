@@ -14,7 +14,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-import kz.gereski.m.homebank.DBHelper;
+import kz.gereski.m.homebank.domain.Day;
 
 public class CalendarHelper {
     //    public static final int NUMBER_OF_DAYS = 43;

@@ -6,27 +6,44 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import kz.gereski.m.homebank.domain.NavItem;
+import kz.gereski.m.homebank.domain.NavProcessor;
 import kz.gereski.m.homebank.util.CalendarHelper;
-import kz.gereski.m.homebank.util.Day;
+import kz.gereski.m.homebank.util.DBHelper;
+import kz.gereski.m.homebank.domain.Day;
+import kz.gereski.m.homebank.util.DrawerListAdapter;
 import kz.gereski.m.homebank.util.Formatter;
 import kz.gereski.m.homebank.views.CalendarTableLayout;
 import kz.gereski.m.homebank.views.DateButton;
 
 public class MonthCalendarPageActivity extends Activity implements CalendarTableLayout.OnCalendarSwiped {
     public static final int COLOR_SELECTED = Color.parseColor("#7F3D3D3C");
+    private ActionBarDrawerToggle mDrawerToggle;
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+    private final ArrayList<NavItem> mNavItems = new ArrayList<>();
     private CalendarTableLayout tb;
     private DBHelper dbHelper;
     private Calendar calendar;
@@ -43,10 +60,10 @@ public class MonthCalendarPageActivity extends Activity implements CalendarTable
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_month_calendar_page);
 
-        locale = getResources().getConfiguration().locale;
-        if (locale.getLanguage().equals("ru"))
-            df = Formatter.getRusDateFormatter1();
-        else df = new SimpleDateFormat("MMMM yyyy", locale);
+        getLocale();
+//        addSliderMenu();
+
+        addOptions();
 
         dbHelper = new DBHelper(this);
 
@@ -57,6 +74,79 @@ public class MonthCalendarPageActivity extends Activity implements CalendarTable
         tb.setOnCalendarSwipedListener(this);
 
         CalendarHelper.setScreenSize(getWindowManager());
+    }
+
+    private void addOptions() {
+        ImageView opt = (ImageView) findViewById(R.id.btMenuList);
+        opt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onFileHandle();
+            }
+        });
+    }
+
+    private void getLocale() {
+        locale = getResources().getConfiguration().locale;
+        if (locale.getLanguage().equals("ru")) {
+            df = Formatter.getRusDateFormatter1();
+        }
+        else df = new SimpleDateFormat("MMMM yyyy", locale);
+    }
+
+    private void addSliderMenu() {
+
+        mNavItems.add(new NavItem("Data", "Import/export", R.drawable.ic_menu_list/*, new NavProcessor() {
+            @Override
+            public void start() {
+                onFileHandle();
+            }
+        }*/));
+        mNavItems.add(new NavItem("Data", "Import/export", R.drawable.ic_menu_list));
+        mDrawerList = (ListView)findViewById(R.id.navList);
+        DrawerListAdapter adapter = new DrawerListAdapter(this, mNavItems);
+        mDrawerList.setAdapter(adapter);
+
+        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mNavItems.get(position).start();
+            }
+        });
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_OPEN);
+//                invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+//                invalidateOptionsMenu();
+            }
+        };
+
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        LinearLayout button = (LinearLayout)findViewById(R.id.menuDateLayout);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDrawerLayout.openDrawer(Gravity.LEFT);
+            }
+        });
+
+        RelativeLayout rl = (RelativeLayout)findViewById(R.id.drawerPane);
+        rl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("On Clicked");
+            }
+        });
     }
 
     @Override
@@ -159,6 +249,7 @@ public class MonthCalendarPageActivity extends Activity implements CalendarTable
         intent.putExtra("Date", d);
         intent.putExtra("DateView", date);
         intent.putExtra("GroupId", -1L);
+        intent.putExtra("Editable", true);
         startActivity(intent);
     }
 

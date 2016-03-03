@@ -58,5 +58,7 @@
     <string name="file.folder.select">Выбор папкиt:</string>
     <string name="file.file.save.as">Сохранить как:</string>
     <string name="file.file.open">Открыть:</string>
+    <string name="set.groups">Настройка групп:</string>
+    <string name="group_settings">Настройка групп:</string>
 
 </resources>

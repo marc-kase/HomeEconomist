@@ -23,15 +23,18 @@ import java.util.List;
 import java.util.Locale;
 
 import kz.gereski.m.homebank.MonthCalendarPageActivity.RequestCode;
+import kz.gereski.m.homebank.domain.Product;
 import kz.gereski.m.homebank.util.CalendarHelper;
+import kz.gereski.m.homebank.util.DBHelper;
 import kz.gereski.m.homebank.util.Formatter;
 
-import static kz.gereski.m.homebank.DBHelper.ACTION;
+import static kz.gereski.m.homebank.util.DBHelper.ACTION;
 
 
 public class DayShoppingListPageActivity extends Activity {
     private DBHelper dbHelper;
     private EditText et;
+    private boolean editable;
     private long groupId = -1;
 
     @Override
@@ -43,21 +46,23 @@ public class DayShoppingListPageActivity extends Activity {
 
         String dateView = getIntent().getStringExtra("DateView");
         Long d = getIntent().getExtras().getLong("Date");
-        Date pd = new Date(d);
         groupId = getIntent().getExtras().getLong("GroupId");
+        editable = getIntent().getExtras().getBoolean("Editable");
 
         et = (EditText) findViewById(R.id.edtxtDateOfList);
         et.setText(dateView);
 
-        final ImageButton btAdd = (ImageButton) findViewById(R.id.btAdd);
-        btAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onAddShoppingClicked(et.getText().toString());
-            }
-        });
+        if (editable) {
+            final ImageButton btAdd = (ImageButton) findViewById(R.id.btAdd);
+            btAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onAddShoppingClicked(et.getText().toString());
+                }
+            });
+        }
 
-        fillTable(pd, groupId);
+        fillTable(new Date(d), groupId);
     }
 
     private void fillTable(Date date, final long groupId) {
@@ -114,8 +119,8 @@ public class DayShoppingListPageActivity extends Activity {
             tvAmt.setPadding(8, 3, 8, 3);
             tvProdPrice.setPadding(8, 3, 8, 3);
 
-            ivDel.setBaselineAlignBottom(true);
-            ivDel.setScaleType(ImageView.ScaleType.FIT_XY);
+//            ivDel.setBaselineAlignBottom(true);
+//            ivDel.setScaleType(ImageView.ScaleType.FIT_XY);
 
             final long id = product.id;
             tvId.setVisibility(View.GONE);
@@ -161,14 +166,16 @@ public class DayShoppingListPageActivity extends Activity {
                 }
             });
 
-            ivDel.setImageResource(R.drawable.delete);
-            ivDel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onDelShoppingClicked(id);
-                    fillTable(getDateOfList(), groupId);
-                }
-            });
+            if (editable) {
+                ivDel.setImageResource(R.drawable.ic_cancel);
+                ivDel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onDelShoppingClicked(id);
+                        fillTable(getDateOfList(), groupId);
+                    }
+                });
+            }
 
             table.addView(trow);
         }

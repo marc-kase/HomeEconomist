@@ -1,4 +1,4 @@
-package kz.gereski.m.homebank;
+package kz.gereski.m.homebank.util;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -22,10 +22,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import kz.gereski.m.homebank.util.Formatter;
+import kz.gereski.m.homebank.domain.Product;
 
-import static kz.gereski.m.homebank.DBHelper.ACTION.DELETE;
-import static kz.gereski.m.homebank.DBHelper.ACTION.INSERT;
+import static kz.gereski.m.homebank.util.DBHelper.ACTION.DELETE;
+import static kz.gereski.m.homebank.util.DBHelper.ACTION.INSERT;
 import static kz.gereski.m.homebank.util.Formatter.YYYYMMDDdashed;
 import static kz.gereski.m.homebank.util.Formatter.gap;
 import static kz.gereski.m.homebank.util.Formatter.parseDate;

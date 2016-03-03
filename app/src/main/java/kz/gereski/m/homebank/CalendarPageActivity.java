@@ -18,6 +18,8 @@ import android.widget.Toast;
 import java.util.Arrays;
 import java.util.Calendar;
 
+import kz.gereski.m.homebank.util.DBHelper;
+
 import static kz.gereski.m.homebank.util.Formatter.YYYYMMDDdashed;
 import static kz.gereski.m.homebank.util.Formatter.formatMoney;
 import static kz.gereski.m.homebank.util.Formatter.gap;

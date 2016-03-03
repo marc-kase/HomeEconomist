@@ -19,6 +19,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import kz.gereski.m.homebank.domain.Product;
+import kz.gereski.m.homebank.util.DBHelper;
 import kz.gereski.m.homebank.util.Formatter;
 
 

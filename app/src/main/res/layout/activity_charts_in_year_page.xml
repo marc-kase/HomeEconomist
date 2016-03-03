@@ -55,6 +55,22 @@
         android:layout_width="@dimen/margin20sp"
         android:layout_height="@dimen/margin20sp" />
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/btMenuList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:src="@drawable/ic_settings" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="@dimen/margin20sp"
+        android:layout_height="@dimen/margin20sp" />
+
     <lecho.lib.hellocharts.view.ColumnChartView
         android:id="@+id/columnchart"
         android:layout_width="match_parent"
