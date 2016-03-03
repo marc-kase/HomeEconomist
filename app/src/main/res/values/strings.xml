@@ -44,9 +44,6 @@
     <string name="group_prompt">Groups</string>
     <string name="edit_product">Edit...</string>
     <string name="no_group">No Group</string>
-    <string-array name="types_array">
-        <item>Choose type</item>
-    </string-array>
     <string name="thursday">Th</string>
     <string name="sunday">Su</string>
     <string name="saturday">Sa</string>
@@ -76,9 +73,10 @@
     <string name="file.file.save.as">Save As:</string>
     <string name="file.file.open">Open:</string>
 
-    <string name="drawer_open">Open</string>
-    <string name="drawer_close">Close</string>
+    <string name="drawer_open" translatable="false">Open</string>
+    <string name="drawer_close" translatable="false">Close</string>
     <string name="set.groups">Groups settings:</string>
     <string name="group_settings">Groups settings:</string>
+    <string name="nogroup">No Group</string>
 
 </resources>
