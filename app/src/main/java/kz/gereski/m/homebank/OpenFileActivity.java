@@ -74,7 +74,7 @@ public class OpenFileActivity extends Activity {
     private void openFile(String file) throws IOException, ParseException {
 
         DBHelper dbHelper = new DBHelper(this);
-        dbHelper.getExportingData();
+        dbHelper.getExportingData(12);
 
         StringBuilder fileContent = new StringBuilder("");
         File f = new File(file);

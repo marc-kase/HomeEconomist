@@ -27,15 +27,16 @@ import java.util.TreeMap;
 
 import kz.gereski.m.homebank.util.Formatter;
 
-public class ChartCalendarPageActivity extends Activity {
+public class ChartByGroupsPageActivity extends Activity {
     private Calendar calendar;
+    private Locale locale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chart_calendar_page);
+        setContentView(R.layout.activity_chart_by_groups_page);
 
-        Locale locale = getResources().getConfiguration().locale;
+        locale = getResources().getConfiguration().locale;
         SimpleDateFormat df;
         if (locale.getLanguage().equals("ru")) {
             df = Formatter.getRusDateFormatter1();
@@ -117,7 +118,7 @@ public class ChartCalendarPageActivity extends Activity {
             flayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showGroupListPage(v, groupId);
+                    showShoppingListByGroup(v, groupId);
                 }
             });
 
@@ -140,10 +141,15 @@ public class ChartCalendarPageActivity extends Activity {
         startActivity(intent);
     }
 
-    private void showGroupListPage(View view, long groupId) {
-        Intent intent = new Intent(this, DayListPageActivity.class);
+    private void showShoppingListByGroup(View view, long groupId) {
+        boolean isRusLocale = locale.getLanguage().equals("ru");
+        String date = isRusLocale ? Formatter.rusFormatDate(calendar.getTime(), 1) :
+                Formatter.formatDate(calendar.getTime(), locale);
+
+        Intent intent = new Intent(this, DayShoppingListPageActivity.class);
         intent.putExtra("Date", calendar.getTime().getTime());
         intent.putExtra("GroupId", groupId);
+        intent.putExtra("DateView", date);
         startActivity(intent);
     }
 

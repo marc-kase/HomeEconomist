@@ -24,7 +24,7 @@ import static kz.gereski.m.homebank.util.Formatter.gap;
 import static kz.gereski.m.homebank.util.Formatter.parseDate;
 import static kz.gereski.m.homebank.util.Formatter.rusMonths1;
 
-
+@Deprecated
 public class CalendarPageActivity extends Activity {
     private long calendarDate;
     private TextView monthName = null;
@@ -154,7 +154,7 @@ public class CalendarPageActivity extends Activity {
         if (view.getDate() != calendarDate) {
             calendarDate = view.getDate();
 
-            Intent intent = new Intent(this, DayListPageActivity.class);
+            Intent intent = new Intent(this, DayShoppingListPageActivity.class);
             intent.putExtra("Date", view.getDate());
             startActivity(intent);
         }
@@ -189,7 +189,7 @@ public class CalendarPageActivity extends Activity {
 
     private void doImport() {
 //        Intent intent = new Intent(this, OpenFileActivity.class);
-        Intent intent = new Intent(this, DaysCalendarPageActivity.class);
+        Intent intent = new Intent(this, MonthCalendarPageActivity.class);
         startActivity(intent);
     }
 }

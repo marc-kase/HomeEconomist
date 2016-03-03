@@ -22,14 +22,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import kz.gereski.m.homebank.DaysCalendarPageActivity.RequestCode;
+import kz.gereski.m.homebank.MonthCalendarPageActivity.RequestCode;
 import kz.gereski.m.homebank.util.CalendarHelper;
 import kz.gereski.m.homebank.util.Formatter;
 
 import static kz.gereski.m.homebank.DBHelper.ACTION;
 
 
-public class DayListPageActivity extends Activity {
+public class DayShoppingListPageActivity extends Activity {
     private DBHelper dbHelper;
     private EditText et;
     private long groupId = -1;
@@ -37,21 +37,17 @@ public class DayListPageActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_daylist_page);
+        setContentView(R.layout.activity_day_shoppinglist_page);
 
         CalendarHelper.setScreenSize(getWindowManager());
 
-        Locale locale = getResources().getConfiguration().locale;
-        boolean isRusLocale = locale.getLanguage().equals("ru");
-
+        String dateView = getIntent().getStringExtra("DateView");
         Long d = getIntent().getExtras().getLong("Date");
         Date pd = new Date(d);
-        String date = isRusLocale ? Formatter.rusFormatDate(pd, 2) :
-                Formatter.formatDate(pd, locale);
         groupId = getIntent().getExtras().getLong("GroupId");
 
         et = (EditText) findViewById(R.id.edtxtDateOfList);
-        et.setText(date);
+        et.setText(dateView);
 
         final ImageButton btAdd = (ImageButton) findViewById(R.id.btAdd);
         btAdd.setOnClickListener(new View.OnClickListener() {
@@ -207,7 +203,7 @@ public class DayListPageActivity extends Activity {
     }
 
     public void onAddShoppingClicked(String date) {
-        Intent intent = new Intent(DayListPageActivity.this, ProductActivity.class);
+        Intent intent = new Intent(DayShoppingListPageActivity.this, ProductActivity.class);
         intent.putExtra("Date", date);
         intent.putExtra("Id", new Date().getTime());
         intent.putExtra("Action", ACTION.INSERT.ordinal());

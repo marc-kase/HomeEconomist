@@ -79,7 +79,7 @@ public class SaveFileActivity extends Activity {
         if (!f.exists()) f.createNewFile();
 
         DBHelper dbHelper = new DBHelper(this);
-        String sql = dbHelper.getExportingData();
+        String sql = dbHelper.getExportingData(12);
 
         byte dataToWrite[] = sql.getBytes("UTF-8");
         OutputStream outStream = new FileOutputStream(f);

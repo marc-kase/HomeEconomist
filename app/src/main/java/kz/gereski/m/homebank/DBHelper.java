@@ -394,18 +394,18 @@ public class DBHelper extends SQLiteOpenHelper {
         return products;
     }
 
-    public String getExportingData() throws ParseException {
-        return getDataFromShoppingTable() + getDataFromGroupsTable();
+    public String getExportingData(int numberOfMonths) throws ParseException {
+        return getDataFromShoppingTable(numberOfMonths) + getDataFromGroupsTable();
     }
 
     @NonNull
-    private String getDataFromShoppingTable() throws ParseException {
+    private String getDataFromShoppingTable(int numberOfMonths) throws ParseException {
         Calendar cal = Calendar.getInstance();
         int lastMonth = cal.get(Calendar.MONTH) + 1;
         int lastYear = cal.get(Calendar.YEAR);
         int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
-        cal.add(Calendar.MONTH, -2);
+        cal.add(Calendar.MONTH, -numberOfMonths);
         int firstMonth = cal.get(Calendar.MONTH) + 1;
         int firstYear = cal.get(Calendar.YEAR);
 

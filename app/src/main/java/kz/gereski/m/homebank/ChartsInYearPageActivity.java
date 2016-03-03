@@ -25,7 +25,7 @@ import lecho.lib.hellocharts.view.ColumnChartView;
 
 import static kz.gereski.m.homebank.util.Formatter.formatMoney;
 
-public class ChartYearPageActivity extends Activity {
+public class ChartsInYearPageActivity extends Activity {
     private int[] mths = {
             R.string.label_jan, R.string.label_feb, R.string.label_mar, R.string.label_apr,
             R.string.label_may, R.string.label_jun, R.string.label_jul, R.string.label_aug,
@@ -34,7 +34,7 @@ public class ChartYearPageActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chart_year_page);
+        setContentView(R.layout.activity_charts_in_year_page);
 
         TextView tvExpenses = (TextView) findViewById(R.id.textCreditChartYearVal);
         RelativeLayout linkToGroup = (RelativeLayout) findViewById(R.id.linkToGropsChartYear);

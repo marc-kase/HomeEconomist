@@ -25,11 +25,12 @@ import kz.gereski.m.homebank.util.Formatter;
 import kz.gereski.m.homebank.views.CalendarTableLayout;
 import kz.gereski.m.homebank.views.DateButton;
 
-public class DaysCalendarPageActivity extends Activity implements CalendarTableLayout.OnCalendarSwiped {
+public class MonthCalendarPageActivity extends Activity implements CalendarTableLayout.OnCalendarSwiped {
     public static final int COLOR_SELECTED = Color.parseColor("#7F3D3D3C");
     private CalendarTableLayout tb;
     private DBHelper dbHelper;
     private Calendar calendar;
+    private Locale locale;
 
     private static Calendar today = Calendar.getInstance();
     private static SimpleDateFormat df;
@@ -40,9 +41,9 @@ public class DaysCalendarPageActivity extends Activity implements CalendarTableL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_days_calendar_page);
+        setContentView(R.layout.activity_month_calendar_page);
 
-        Locale locale = getResources().getConfiguration().locale;
+        locale = getResources().getConfiguration().locale;
         if (locale.getLanguage().equals("ru"))
             df = Formatter.getRusDateFormatter1();
         else df = new SimpleDateFormat("MMMM yyyy", locale);
@@ -149,20 +150,26 @@ public class DaysCalendarPageActivity extends Activity implements CalendarTableL
     }
 
     private void showDayListPage(View view) {
-        Intent intent = new Intent(this, DayListPageActivity.class);
-        intent.putExtra("Date", ((DateButton) view).getDate());
+        boolean isRusLocale = locale.getLanguage().equals("ru");
+        long d = ((DateButton) view).getDate();
+        String date = isRusLocale ? Formatter.rusFormatDate(new Date(d), 2) :
+                Formatter.formatDate(new Date(d), locale);
+
+        Intent intent = new Intent(this, DayShoppingListPageActivity.class);
+        intent.putExtra("Date", d);
+        intent.putExtra("DateView", date);
         intent.putExtra("GroupId", -1L);
         startActivity(intent);
     }
 
     private void showChartCalendarPage(Calendar cal) {
-        Intent intent = new Intent(this, ChartCalendarPageActivity.class);
+        Intent intent = new Intent(this, ChartByGroupsPageActivity.class);
         intent.putExtra("Date", cal.getTime().getTime());
         startActivityForResult(intent, RequestCode.ChartCalPage.ordinal());
     }
 
     private void showChartYearPage(Calendar cal) {
-        Intent intent = new Intent(this, ChartYearPageActivity.class);
+        Intent intent = new Intent(this, ChartsInYearPageActivity.class);
         intent.putExtra("Date", cal.getTime().getTime());
         startActivity(intent);
     }

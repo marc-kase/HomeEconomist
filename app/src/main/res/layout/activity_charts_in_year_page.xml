@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="kz.gereski.m.homebank.ChartYearPageActivity"
+    tools:context=".ChartsInYearPageActivity"
     android:gravity="center_horizontal"
     android:foregroundGravity="center_horizontal|fill">
 
