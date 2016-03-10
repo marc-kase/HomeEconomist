@@ -11,20 +11,33 @@
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin">
 
-        <EditText
-            android:id="@+id/etWhen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:clickable="true"
-            android:focusable="false"
-            android:gravity="center_horizontal"
-            android:hint="@string/date"
-            android:inputType="date"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:background="#010101"
-            android:textColor="#fff7f9"
-            android:textStyle="bold"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/btBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:src="@drawable/ic_arrow_back"
+                android:layout_alignParentLeft="true" />
+
+            <EditText
+                android:id="@+id/etWhen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:clickable="true"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:hint="@string/date"
+                android:inputType="date"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:background="#010101"
+                android:textColor="#fff7f9"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
 
         <Space
             android:layout_width="20px"
@@ -98,6 +111,7 @@
             android:background="#12344a"
             android:padding="20sp"
             android:textSize="18sp" />
+
     </LinearLayout>
 
 

@@ -36,6 +36,7 @@ public class DayShoppingListPageActivity extends Activity {
     private EditText et;
     private boolean editable;
     private long groupId = -1;
+    Long now = new Date().getTime();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,24 +48,25 @@ public class DayShoppingListPageActivity extends Activity {
         CalendarHelper.setScreenSize(getWindowManager());
 
         String dateView = getIntent().getStringExtra("DateView");
-        Long d = getIntent().getExtras().getLong("Date");
+        now = getIntent().getExtras().getLong("Date");
         groupId = getIntent().getExtras().getLong("GroupId");
         editable = getIntent().getExtras().getBoolean("Editable");
 
         et = (EditText) findViewById(R.id.edtxtDateOfList);
         et.setText(dateView);
 
-        if (editable) {
-            final ImageButton btAdd = (ImageButton) findViewById(R.id.btAdd);
-            btAdd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onAddShoppingClicked(et.getText().toString());
-                }
-            });
-        }
+        final ImageButton btAdd = (ImageButton) findViewById(R.id.btAdd);
+        btAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onAddShoppingClicked(now);
+            }
+        });
 
-        fillTable(new Date(d), groupId);
+        if (editable) btAdd.setVisibility(View.VISIBLE);
+        else btAdd.setVisibility(View.INVISIBLE);
+
+        fillTable(new Date(now), groupId);
     }
 
     private void fillTable(Date date, final long groupId) {
@@ -92,7 +94,7 @@ public class DayShoppingListPageActivity extends Activity {
             long end = c.getTime().getTime();
             products = dbHelper.getListByGroup(begin, end, groupId);
         }
-        for (Product product : products) {
+        for (final Product product : products) {
             TableRow trow = new TableRow(this);
             trow.setLayoutParams(tableRowParams);
             trow.setPadding(8, 3, 8, 3);
@@ -157,7 +159,7 @@ public class DayShoppingListPageActivity extends Activity {
                 @Override
                 public void onClick(View v) {
                     onEditShoppingClicked(
-                            et.getText().toString(),
+                            product.date.getTime(),
                             Long.parseLong(tvId.getText().toString()),
                             tvName.getText().toString(),
                             tvShop.getText().toString(),
@@ -211,7 +213,7 @@ public class DayShoppingListPageActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onAddShoppingClicked(String date) {
+    public void onAddShoppingClicked(long date) {
         Intent intent = new Intent(DayShoppingListPageActivity.this, ProductActivity.class);
         intent.putExtra("Date", date);
         intent.putExtra("Id", new Date().getTime());
@@ -219,7 +221,7 @@ public class DayShoppingListPageActivity extends Activity {
         startActivityForResult(intent, RequestCode.ProductActivity.ordinal());
     }
 
-    private void onEditShoppingClicked(String date, long id,
+    private void onEditShoppingClicked(long date, long id,
                                        String name, String shop, String price, String group, String amount) {
         Intent intent = new Intent(this, ProductActivity.class);
         intent.putExtra("Date", date);
@@ -244,7 +246,7 @@ public class DayShoppingListPageActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        fillTable(getDateOfList(), groupId);
+        fillTable(new Date(now), groupId);
     }
 
     private Date getDateOfList() {

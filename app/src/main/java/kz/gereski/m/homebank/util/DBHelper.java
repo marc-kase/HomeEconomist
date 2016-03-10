@@ -394,6 +394,36 @@ public class DBHelper extends SQLiteOpenHelper {
         return products;
     }
 
+    public Product getProduct(long id) {
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        Map<Long, String> groups = getGroups(db);
+        Product product = new Product();
+
+        Cursor c = db.rawQuery( "select * from shopping where id=?", new String[]{String.valueOf(id)});
+        if (c.moveToFirst()) {
+            int idIdx = c.getColumnIndex("id");
+            int nameIdx = c.getColumnIndex("name");
+            int groupIdx = c.getColumnIndex("group_name");
+            int shopIdx = c.getColumnIndex("shop");
+            int priceIdx = c.getColumnIndex("price");
+            int amountIdx = c.getColumnIndex("amount");
+
+            product.id = Long.parseLong(c.getString(idIdx));
+            product.name = c.getString(nameIdx);
+            product.shop = c.getString(shopIdx);
+            product.price = c.getDouble(priceIdx);
+            product.amount = c.getDouble(amountIdx);
+            Long group = c.getLong(groupIdx);
+            product.group.id = group;
+            product.group.name = groups.get(group != null ? group : 0L);
+        } else c.close();
+        db.close();
+
+        return product;
+    }
+
     public String getExportingData(int numberOfMonths) throws ParseException {
         return getDataFromShoppingTable(numberOfMonths) + getDataFromGroupsTable();
     }

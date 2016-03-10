@@ -143,7 +143,7 @@ public class ChartByGroupsPageActivity extends Activity {
     private void showShoppingListByGroup(View view, long groupId) {
         boolean isRusLocale = locale.getLanguage().equals("ru");
         String date = isRusLocale ? Formatter.rusFormatDate(calendar.getTime(), 1) :
-                Formatter.formatDate(calendar.getTime(), locale);
+                Formatter.formatDate1(calendar.getTime(), locale);
 
         Intent intent = new Intent(this, DayShoppingListPageActivity.class);
         intent.putExtra("Date", calendar.getTime().getTime());

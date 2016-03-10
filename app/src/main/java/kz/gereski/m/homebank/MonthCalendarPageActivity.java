@@ -15,7 +15,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TableRow;
@@ -29,7 +28,6 @@ import java.util.Date;
 import java.util.Locale;
 
 import kz.gereski.m.homebank.domain.NavItem;
-import kz.gereski.m.homebank.domain.NavProcessor;
 import kz.gereski.m.homebank.util.CalendarHelper;
 import kz.gereski.m.homebank.util.DBHelper;
 import kz.gereski.m.homebank.domain.Day;
@@ -243,7 +241,7 @@ public class MonthCalendarPageActivity extends Activity implements CalendarTable
         boolean isRusLocale = locale.getLanguage().equals("ru");
         long d = ((DateButton) view).getDate();
         String date = isRusLocale ? Formatter.rusFormatDate(new Date(d), 2) :
-                Formatter.formatDate(new Date(d), locale);
+                Formatter.formatDate2(new Date(d), locale);
 
         Intent intent = new Intent(this, DayShoppingListPageActivity.class);
         intent.putExtra("Date", d);

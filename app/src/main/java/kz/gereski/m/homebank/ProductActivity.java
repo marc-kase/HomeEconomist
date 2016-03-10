@@ -10,9 +10,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,15 +35,21 @@ public class ProductActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
+        addOptions();
+
         dbHelper = new DBHelper(this);
 
         Locale locale = getResources().getConfiguration().locale;
         boolean isRusLocale = locale.getLanguage().equals("ru");
 
-        String d = getIntent().getExtras().getString("Date");
-        SimpleDateFormat df = isRusLocale ? Formatter.getRusDateFormatter2() :
-                new SimpleDateFormat("dd MMMM yyyy", locale);
-        final Date date = Formatter.parseDate(d, df);
+
+//        String d = getIntent().getExtras().getString("Date");
+//        SimpleDateFormat df = isRusLocale ? Formatter.getRusDateFormatter2() :
+//                new SimpleDateFormat("dd MMMM yyyy", locale);
+//        final Date date = Formatter.parseDate(d, df);
+
+        long dt = getIntent().getExtras().getLong("Date");
+        final Date date = new Date(dt);
 
         final long id = getIntent().getExtras().getLong("Id");
         final String name = getIntent().getExtras().getString("Name");
@@ -61,7 +67,7 @@ public class ProductActivity extends Activity {
         spnGroup = (Spinner) findViewById(R.id.spnGroup);
 
         etDate.setText(isRusLocale ? Formatter.rusFormatDate(date, 2) :
-                Formatter.formatDate(date, locale));
+                Formatter.formatDate2(date, locale));
         etName.setText(name);
         etShop.setText(shop);
         etPrice.setText(price);
@@ -176,5 +182,19 @@ public class ProductActivity extends Activity {
     private void editGroups() {
         Intent intent = new Intent(this, GroupsPageActivity.class);
         startActivity(intent);
+    }
+
+    private void addOptions() {
+        ImageView bck = (ImageView) findViewById(R.id.btBack);
+        bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBack();
+            }
+        });
+    }
+
+    private void goBack() {
+        super.onBackPressed();
     }
 }

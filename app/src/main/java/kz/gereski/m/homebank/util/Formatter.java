@@ -29,7 +29,12 @@ public class Formatter {
         }
     }
 
-    public static String formatDate(Date date, Locale locale) {
+    public static String formatDate1(Date date, Locale locale) {
+        SimpleDateFormat df = new SimpleDateFormat("MMMM yyyy", locale);
+        return df.format(date);
+    }
+
+    public static String formatDate2(Date date, Locale locale) {
         SimpleDateFormat df = new SimpleDateFormat("dd MMMM yyyy", locale);
         return df.format(date);
     }
