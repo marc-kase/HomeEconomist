@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:background="#00ffffff"
-                android:src="@drawable/ic_add"
+                android:src="@drawable/ic_add2"
                 android:scaleType="fitXY" />
         </RelativeLayout>
 

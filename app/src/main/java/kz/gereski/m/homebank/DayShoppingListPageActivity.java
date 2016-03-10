@@ -171,7 +171,7 @@ public class DayShoppingListPageActivity extends Activity {
             });
 
             if (editable) {
-                ivDel.setImageResource(R.drawable.ic_cancel);
+                ivDel.setImageResource(R.drawable.ic_remove);
                 ivDel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

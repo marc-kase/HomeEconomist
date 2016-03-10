@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -196,7 +197,7 @@ abstract class GroupButton extends LinearLayout {
 
         final TextView tv = new TextView(context);
         tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, width);
-        tv.setPadding(16, 0, 8, 8);
+        tv.setPadding(16, 8, 8, 8);
         tv.setText(name);
         tv.setBackgroundColor(color);
         tv.setLayoutParams(txtLayoutParam);
@@ -213,11 +214,8 @@ abstract class GroupButton extends LinearLayout {
         ibDel.setBackgroundColor(Color.TRANSPARENT);
         ibDel.setPadding(8, 16, 8, 8);
 
-        addView(ibDel);
-        addView(tv);
-
         if (id != ADD_GROUPNAME_KEY) {
-            ibDel.setImageResource(R.drawable.ic_cancel);
+            ibDel.setImageResource(R.drawable.ic_remove);
             ibDel.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -225,7 +223,7 @@ abstract class GroupButton extends LinearLayout {
                 }
             });
         } else {
-            ibDel.setImageResource(R.drawable.add);
+            ibDel.setImageResource(R.drawable.ic_add2);
             tv.setBackgroundColor(Color.TRANSPARENT);
             tv.setText(R.string.group_settings);
             ibDel.setOnClickListener(new OnClickListener() {
@@ -235,6 +233,9 @@ abstract class GroupButton extends LinearLayout {
                 }
             });
         }
+
+        addView(ibDel);
+        addView(tv);
     }
 
     public abstract void editGroupName(DBHelper dbHelper);
