@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HomeEconomist.iml" filepath="$PROJECT_DIR$/HomeEconomist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HomeBank.iml" filepath="$PROJECT_DIR$/HomeBank.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

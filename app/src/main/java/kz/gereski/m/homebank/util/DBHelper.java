@@ -315,6 +315,7 @@ public class DBHelper extends SQLiteOpenHelper {
             int shopIdx = c.getColumnIndex("shop");
             int priceIdx = c.getColumnIndex("price");
             int amountIdx = c.getColumnIndex("amount");
+            int dateIdx = c.getColumnIndex("date");
 
             do {
                 Product product = new Product();
@@ -326,6 +327,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 Long group = c.getLong(groupIdx);
                 product.group.id = group;
                 product.group.name = groups.get(group != null ? group : 0L);
+                product.date = new Date(c.getLong(dateIdx));
 
                 products.add(product);
 
@@ -371,6 +373,7 @@ public class DBHelper extends SQLiteOpenHelper {
             int shopIdx = c.getColumnIndex("shop");
             int priceIdx = c.getColumnIndex("price");
             int amountIdx = c.getColumnIndex("amount");
+            int dateIdx = c.getColumnIndex("date");
 
             do {
                 Product product = new Product();
@@ -382,6 +385,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 Long group = c.getLong(groupIdx);
                 product.group.id = group;
                 product.group.name = groups.get(group != null ? group : 0L);
+                product.date = new Date(c.getLong(dateIdx));
 
                 products.add(product);
 
@@ -401,7 +405,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Map<Long, String> groups = getGroups(db);
         Product product = new Product();
 
-        Cursor c = db.rawQuery( "select * from shopping where id=?", new String[]{String.valueOf(id)});
+        Cursor c = db.rawQuery("select * from shopping where id=?", new String[]{String.valueOf(id)});
         if (c.moveToFirst()) {
             int idIdx = c.getColumnIndex("id");
             int nameIdx = c.getColumnIndex("name");
