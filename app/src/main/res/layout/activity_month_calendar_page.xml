@@ -121,27 +121,30 @@
             android:layout_gravity="center_horizontal"
             android:minHeight="10dp" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/menuDateLayout"
             android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Month"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_alignWithParentIfMissing="false"
+                android:layout_centerHorizontal="true" />
 
             <ImageView
                 android:id="@+id/btMenuList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#000000"
-                android:src="@drawable/ic_settings" />
-
-            <TextView
-                android:id="@+id/txtMonth"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Month"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-        </LinearLayout>
+                android:src="@drawable/ic_settings"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
 
         <kz.gereski.m.homebank.views.CalendarTableLayout
             android:layout_width="match_parent"

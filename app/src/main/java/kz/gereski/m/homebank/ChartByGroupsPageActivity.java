@@ -49,7 +49,7 @@ public class ChartByGroupsPageActivity extends Activity {
         Long d = getIntent().getExtras().getLong("Date");
         calendar.setTime(new Date(d));
 
-        TextView tvMonth = (TextView)findViewById(R.id.txtChartMonth);
+        TextView tvMonth = (TextView) findViewById(R.id.txtChartMonth);
         tvMonth.setText(df.format(calendar.getTime()));
 
         int month = calendar.get(Calendar.MONTH) + 1;
@@ -59,12 +59,12 @@ public class ChartByGroupsPageActivity extends Activity {
         Map<Long, Double> expByGroup = dbHelper.getExpensesByGroup(month, year);
         Map<Long, String> gs = dbHelper.getGroups(dbHelper.getReadableDatabase());
         Map<Long, String> groups = new TreeMap<>(gs);
-        Long pbarMaxVal = Math.round(getMaxExpenses(expByGroup)/total*100+1);
+        Long pbarMaxVal = Math.round(getMaxExpenses(expByGroup) / total * 100 + 1);
 
-        TextView allExps = (TextView)findViewById(R.id.txtChartExpVal);
+        TextView allExps = (TextView) findViewById(R.id.txtChartExpVal);
         allExps.setText(Formatter.formatMoney(total));
 
-        RelativeLayout linkToGroups = (RelativeLayout)findViewById(R.id.linkToGropsChartCal);
+        RelativeLayout linkToGroups = (RelativeLayout) findViewById(R.id.linkToGropsChartCal);
         linkToGroups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,7 +109,7 @@ public class ChartByGroupsPageActivity extends Activity {
                 protected void onSizeChanged(int w, int h, int oldw, int oldh) {
                     super.onSizeChanged(w, h, oldw, oldh);
                     txtProgress.setTextSize(TypedValue.COMPLEX_UNIT_PX, h * 2 / 3);
-                    group.setTextSize(TypedValue.COMPLEX_UNIT_PX, h*2/3);
+                    group.setTextSize(TypedValue.COMPLEX_UNIT_PX, h * 2 / 3);
                 }
             };
             flayout.setPadding(0, 0, 0, 0);
@@ -140,11 +140,6 @@ public class ChartByGroupsPageActivity extends Activity {
         return max;
     }
 
-    private void showGroupPage() {
-        Intent intent = new Intent(this, GroupsPageActivity.class);
-        startActivity(intent);
-    }
-
     private void showShoppingListByGroup(View view, long groupId) {
         boolean isRusLocale = locale.getLanguage().equals("ru");
         String date = isRusLocale ? Formatter.rusFormatDate(calendar.getTime(), 1) :
@@ -166,6 +161,23 @@ public class ChartByGroupsPageActivity extends Activity {
                 showGroupPage();
             }
         });
+
+        ImageView bck = (ImageView) findViewById(R.id.btBack);
+        bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBack();
+            }
+        });
+    }
+
+    private void showGroupPage() {
+        Intent intent = new Intent(this, GroupsPageActivity.class);
+        startActivity(intent);
+    }
+
+    private void goBack() {
+        super.onBackPressed();
     }
 
     @Override

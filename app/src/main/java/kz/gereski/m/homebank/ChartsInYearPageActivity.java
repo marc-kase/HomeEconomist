@@ -47,7 +47,7 @@ public class ChartsInYearPageActivity extends Activity {
             }
         });
 
-        LinearLayout row = (LinearLayout)findViewById(R.id.layMonths);
+        LinearLayout row = (LinearLayout) findViewById(R.id.layMonths);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
@@ -110,17 +110,12 @@ public class ChartsInYearPageActivity extends Activity {
             ColumnChartView chartView = (ColumnChartView) findViewById(R.id.columnchart);
             chartView.setColumnChartData(data);
 
-            if (++currMonth > 11) currMonth=0;
+            if (++currMonth > 11) currMonth = 0;
         }
 
         tvExpenses.setText(formatMoney(total));
 
         addOptions();
-    }
-
-    private void showGroupPage() {
-        Intent intent = new Intent(this, GroupsPageActivity.class);
-        startActivity(intent);
     }
 
     private void addOptions() {
@@ -131,5 +126,22 @@ public class ChartsInYearPageActivity extends Activity {
                 showGroupPage();
             }
         });
+
+        ImageView bck = (ImageView) findViewById(R.id.btBack);
+        bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBack();
+            }
+        });
+    }
+
+    private void showGroupPage() {
+        Intent intent = new Intent(this, GroupsPageActivity.class);
+        startActivity(intent);
+    }
+
+    private void goBack() {
+        super.onBackPressed();
     }
 }

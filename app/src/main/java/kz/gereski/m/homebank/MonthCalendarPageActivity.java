@@ -96,13 +96,13 @@ public class MonthCalendarPageActivity extends Activity implements CalendarTable
 
     private void addSliderMenu() {
 
-        mNavItems.add(new NavItem("Data", "Import/export", R.drawable.ic_menu_list/*, new NavProcessor() {
+        mNavItems.add(new NavItem("Data", "Import/export", R.drawable.ic_settings/*, new NavProcessor() {
             @Override
             public void start() {
                 onFileHandle();
             }
         }*/));
-        mNavItems.add(new NavItem("Data", "Import/export", R.drawable.ic_menu_list));
+        mNavItems.add(new NavItem("Data", "Import/export", R.drawable.ic_settings));
         mDrawerList = (ListView)findViewById(R.id.navList);
         DrawerListAdapter adapter = new DrawerListAdapter(this, mNavItems);
         mDrawerList.setAdapter(adapter);
@@ -132,7 +132,7 @@ public class MonthCalendarPageActivity extends Activity implements CalendarTable
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        LinearLayout button = (LinearLayout)findViewById(R.id.menuDateLayout);
+        RelativeLayout button = (RelativeLayout)findViewById(R.id.menuDateLayout);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

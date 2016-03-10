@@ -42,6 +42,8 @@ public class DayShoppingListPageActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day_shoppinglist_page);
 
+        addOptions();
+
         CalendarHelper.setScreenSize(getWindowManager());
 
         String dateView = getIntent().getStringExtra("DateView");
@@ -318,5 +320,19 @@ public class DayShoppingListPageActivity extends Activity {
         trow.addView(ivDel);
 
         table.addView(trow);
+    }
+
+    private void addOptions() {
+        ImageView bck = (ImageView) findViewById(R.id.btBack);
+        bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBack();
+            }
+        });
+    }
+
+    private void goBack() {
+        super.onBackPressed();
     }
 }
